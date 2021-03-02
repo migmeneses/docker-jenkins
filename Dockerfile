@@ -20,9 +20,4 @@ RUN apt-get install -y docker-ce
 
 RUN usermod -a -G docker jenkins
 
-# If the host machine/hypervisor is running focal ubuntu ( 20.04 ) as OS, it will assign GID 998 instead of 999
-# That will cause a permission issue on the user jenkins for running docker commands
-# so we changed to 998 in order to solve this issue
-RUN groupmod -g 998 docker
-
 USER jenkins
